@@ -11,11 +11,18 @@ import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
 import type { AbstractIntlMessages } from "next-intl";
 
-export const metadata: Metadata = {
-  title: "Konbini Code",
-  description:
-    "Konbini Code - Desenvolvimento de Software sob medida para seu negócio. Criação de sites, sistemas, landing pages, integrações e automações.",
-  keywords: [
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const baseUrl = "https://konbinicode.com";
+
+  const description =
+    "Konbini Code - Desenvolvimento de Software sob medida para seu negócio. Criação de sites, sistemas, landing pages, integrações e automações.";
+
+  const keywords = [
     "desenvolvimento de software",
     "agência digital",
     "criação de sites",
@@ -58,57 +65,85 @@ export const metadata: Metadata = {
     "desenvolvimento web em São Paulo",
     "desenvolvimento web Brasil",
     "Konbini Code",
-  ],
-  metadataBase: new URL("https://konbinicode.com"),
-  applicationName: "Konbini Code",
-  category: "technology",
-  authors: [{ name: "Konbini Code", url: "https://konbinicode.com" }],
-  publisher: "Konbini Code",
-  referrer: "origin-when-cross-origin",
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
+  ];
+
+  const ogLocaleMap: Record<string, string> = {
+    pt: "pt_BR",
+    en: "en_US",
+    es: "es_ES",
+    ja: "ja_JP",
+  };
+
+  const languages: Record<string, string> = {
+    en: `${baseUrl}/en`,
+    pt: `${baseUrl}/pt`,
+    es: `${baseUrl}/es`,
+    ja: `${baseUrl}/ja`,
+    "x-default": baseUrl,
+  };
+
+  return {
+    metadataBase: new URL(baseUrl),
+    applicationName: "Konbini Code",
+    category: "technology",
+    authors: [{ name: "Konbini Code", url: baseUrl }],
+    publisher: "Konbini Code",
+    referrer: "origin-when-cross-origin",
+    title: {
+      default: "Konbini Code",
+      template: "%s | Konbini Code",
+    },
+    description,
+    keywords,
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages,
+    },
+    openGraph: {
+      title: "Konbini Code",
+      description,
+      url: `${baseUrl}/${locale}`,
+      siteName: "Konbini Code",
+      images: [
+        {
+          url: "/readme/desktop.png",
+          width: 1200,
+          height: 630,
+          alt: "Konbini Code - Desenvolvimento de Software",
+          type: "image/png",
+        },
+      ],
+      locale: ogLocaleMap[locale] ?? "pt_BR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Konbini Code",
+      description,
+      images: ["/readme/desktop.png"],
+      creator: "@konbinicode",
+      site: "@konbinicode",
+    },
+    icons: {
+      icon: "/favicon.png",
+      apple: "/favicon.png",
+    },
+    manifest: "/manifest.webmanifest",
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
-  },
-  openGraph: {
-    title: "Konbini Code",
-    description:
-      "Desenvolvimento de Software sob medida para seu negócio. Criação de sites, sistemas, landing pages, integrações e automações.",
-    url: "https://konbinicode.com",
-    siteName: "Konbini Code",
-    images: [
-      {
-        url: "/readme/desktop.png",
-        width: 1200,
-        height: 630,
-        alt: "Konbini Code - Desenvolvimento de Software",
-        type: "image/png",
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
       },
-    ],
-    locale: "pt_BR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Konbini Code",
-    description:
-      "Desenvolvimento de Software sob medida para seu negócio. Criação de sites, sistemas, landing pages, integrações e automações.",
-    images: ["/readme/desktop.png"],
-    creator: "@konbinicode",
-    site: "@konbinicode",
-  },
-  alternates: {
-    canonical: "https://konbinicode.com",
-  },
-};
+    },
+  } satisfies Metadata;
+}
 
 export function generateViewport() {
   return {

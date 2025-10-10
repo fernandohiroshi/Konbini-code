@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+  productionBrowserSourceMaps: false,
   images: {
     remotePatterns: [
       {
@@ -15,7 +17,7 @@ const nextConfig: NextConfig = {
     config.externals = config.externals || [];
     config.externals.push({
       "utf-8-validate": "commonjs utf-8-validate",
-      "bufferutil": "commonjs bufferutil",
+      bufferutil: "commonjs bufferutil",
     });
     return config;
   },

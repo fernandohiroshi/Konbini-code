@@ -10,7 +10,7 @@ export default function middleware(request: NextRequest) {
   const isDev = process.env.NODE_ENV !== "production";
   const scriptSrc = isDev
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-    : "script-src 'self' 'unsafe-inline'";
+    : "script-src 'self'";
   const connectSrc = isDev
     ? "connect-src 'self' ws: wss:"
     : "connect-src 'self'";
