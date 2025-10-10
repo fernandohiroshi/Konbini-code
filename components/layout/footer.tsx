@@ -7,6 +7,7 @@ import Image from "next/image";
 
 const Footer = () => {
   const t = useTranslations("FooterSection");
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-muted/30 border-t py-8">
       <div className="max-w-6xl mx-auto py-12 px-4">
@@ -123,6 +124,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
+        <div className="mt-8 pt-4 border-t text-center text-xs text-muted-foreground">
+          © {year} Konbini Code
         </div>
       </div>
     </footer>

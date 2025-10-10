@@ -19,53 +19,75 @@ export async function generateMetadata({
   const { locale } = await params;
   const baseUrl = "https://konbinicode.com";
 
-  const description =
-    "Konbini Code - Desenvolvimento de Software sob medida para seu negócio. Criação de sites, sistemas, landing pages, integrações e automações.";
+  const localized = {
+    pt: {
+      title: "Agência Digital em Foz do Iguaçu | Konbini Code",
+      description:
+        "Agência digital em Foz do Iguaçu especializada em sites, landing pages, identidade visual e social media. Atendemos também Puerto Iguazú (AR) e Ciudad del Este (PY).",
+      keywords: [
+        "agência digital Foz do Iguaçu",
+        "criação de sites Foz do Iguaçu",
+        "landing page Foz do Iguaçu",
+        "identidade visual Foz do Iguaçu",
+        "social media Foz do Iguaçu",
+        "desenvolvimento de sites fronteira",
+        "agência web Tríplice Fronteira",
+        "sites Puerto Iguazú",
+        "sites Ciudad del Este",
+        "SEO local Foz do Iguaçu",
+        "Konbini Code",
+      ],
+    },
+    es: {
+      title: "Agencia Digital en Foz de Iguazú | Konbini Code",
+      description:
+        "Agencia digital en Foz de Iguazú para sitios web, landing pages, identidad visual y redes sociales. También atendemos Puerto Iguazú (AR) y Ciudad del Este (PY).",
+      keywords: [
+        "agencia digital Foz de Iguazú",
+        "creación de sitios Foz de Iguazú",
+        "landing page Foz de Iguazú",
+        "identidad visual Foz de Iguazú",
+        "redes sociales Foz de Iguazú",
+        "agencia web Triple Frontera",
+        "sitios Puerto Iguazú",
+        "sitios Ciudad del Este",
+        "SEO local Foz de Iguazú",
+        "Konbini Code",
+      ],
+    },
+    en: {
+      title: "Digital Agency in Foz do Iguaçu | Konbini Code",
+      description:
+        "Digital agency in Foz do Iguaçu for websites, landing pages, brand identity and social media. We also serve Puerto Iguazú (AR) and Ciudad del Este (PY).",
+      keywords: [
+        "digital agency Foz do Iguaçu",
+        "website development Foz do Iguaçu",
+        "landing pages Foz do Iguaçu",
+        "brand identity Foz do Iguaçu",
+        "social media Foz do Iguaçu",
+        "web agency tri-border",
+        "websites Puerto Iguazú",
+        "websites Ciudad del Este",
+        "local SEO Foz do Iguaçu",
+        "Konbini Code",
+      ],
+    },
+    ja: {
+      title: "フォス・ド・イグアスのデジタル制作 | Konbini Code",
+      description:
+        "フォス・ド・イグアスを拠点に、Webサイト、LP、ブランドデザイン、SNS運用を提供。プエルト・イグアス（AR）、シウダ・デル・エステ（PY）にも対応。",
+      keywords: [
+        "デジタルエージェンシー フォス・ド・イグアス",
+        "Web制作 フォス・ド・イグアス",
+        "ランディングページ フォス・ド・イグアス",
+        "ブランディング フォス・ド・イグアス",
+        "SNS運用 フォス・ド・イグアス",
+        "Konbini Code",
+      ],
+    },
+  };
 
-  const keywords = [
-    "desenvolvimento de software",
-    "agência digital",
-    "criação de sites",
-    "criação de aplicativos",
-    "landing page",
-    "sistemas web",
-    "sistemas personalizados",
-    "automação de processos",
-    "integração de sistemas",
-    "consultoria em tecnologia",
-    "produtividade empresarial",
-    "transformação digital",
-    "soluções digitais",
-    "web design",
-    "UX/UI design",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "frontend",
-    "backend",
-    "API",
-    "SEO",
-    "otimização de sites",
-    "performance web",
-    "startup tecnologia",
-    "empresa de tecnologia",
-    "software sob medida",
-    "desenvolvimento ágil",
-    "inovação digital",
-    "automação comercial",
-    "plataforma digital",
-    "consultoria TI",
-    "site institucional",
-    "e-commerce",
-    "app mobile",
-    "soluções para empresas",
-    "empresa de software",
-    "programador freelance",
-    "agência web",
-    "desenvolvimento web em São Paulo",
-    "desenvolvimento web Brasil",
-    "Konbini Code",
-  ];
+  const meta = localized[locale as keyof typeof localized] ?? localized.pt;
 
   const ogLocaleMap: Record<string, string> = {
     pt: "pt_BR",
@@ -90,18 +112,18 @@ export async function generateMetadata({
     publisher: "Konbini Code",
     referrer: "origin-when-cross-origin",
     title: {
-      default: "Konbini Code",
+      default: meta.title,
       template: "%s | Konbini Code",
     },
-    description,
-    keywords,
+    description: meta.description,
+    keywords: meta.keywords,
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages,
     },
     openGraph: {
-      title: "Konbini Code",
-      description,
+      title: meta.title,
+      description: meta.description,
       url: `${baseUrl}/${locale}`,
       siteName: "Konbini Code",
       images: [
@@ -169,10 +191,81 @@ export default async function RootLayout({
     return notFound();
   }
 
+  const baseUrl = "https://konbinicode.com";
+  const metaLocalMap: Record<string, { title: string; description: string }> = {
+    pt: {
+      title: "Agência Digital em Foz do Iguaçu | Konbini Code",
+      description:
+        "Agência digital em Foz do Iguaçu especializada em sites, landing pages, identidade visual e social media. Atendemos também Puerto Iguazú (AR) e Ciudad del Este (PY).",
+    },
+    es: {
+      title: "Agencia Digital en Foz de Iguazú | Konbini Code",
+      description:
+        "Agencia digital en Foz de Iguazú para sitios web, landing pages, identidad visual y redes sociales. También atendemos Puerto Iguazú (AR) y Ciudad del Este (PY).",
+    },
+    en: {
+      title: "Digital Agency in Foz do Iguaçu | Konbini Code",
+      description:
+        "Digital agency in Foz do Iguaçu for websites, landing pages, brand identity and social media. We also serve Puerto Iguazú (AR) and Ciudad del Este (PY).",
+    },
+    ja: {
+      title: "フォス・ド・イグアスのデジタル制作 | Konbini Code",
+      description:
+        "フォス・ド・イグアスを拠点に、Webサイト、LP、ブランドデザイン、SNS運用を提供。プエルト・イグアス（AR）、シウダ・デル・エステ（PY）にも対応。",
+    },
+  };
+  const metaLocal = metaLocalMap[locale] ?? metaLocalMap.pt;
+  const jsonLdOrg = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${baseUrl}#organization`,
+    name: "Konbini Code",
+    url: baseUrl,
+    image: `${baseUrl}/branding.webp`,
+    description: metaLocal.description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Foz do Iguaçu",
+      addressRegion: "PR",
+      addressCountry: "BR",
+    },
+    areaServed: [
+      "Foz do Iguaçu - PR, BR",
+      "Puerto Iguazú - Misiones, AR",
+      "Ciudad del Este - Alto Paraná, PY",
+    ],
+    telephone: "+55 45 98831-1915",
+    sameAs: [
+      "https://www.linkedin.com/company/konbini-code",
+      "https://www.instagram.com/konbini_code/",
+      "https://www.facebook.com/profile.php?id=61579275967882",
+    ],
+  });
+  const jsonLdBreadcrumb = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${baseUrl}/${locale}`,
+      },
+    ],
+  });
+
   return (
     <html lang={locale} suppressHydrationWarning className="!scroll-smooth">
       <body className={`antialiased ${montserrat.className}`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: jsonLdOrg }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: jsonLdBreadcrumb }}
+          />
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
