@@ -39,34 +39,40 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         margin: '16px 0',
       }}
     />
-    <div style={{ marginBottom: '12px', fontSize: '15px' }}>
-      <strong style={{ color: '#000' }}>Nome:</strong> {firstName} {lastName}
-    </div>
-    <div style={{ marginBottom: '12px', fontSize: '15px' }}>
-      <strong style={{ color: '#000' }}>Email:</strong>{' '}
-      <a
-        href={`mailto:${email}`}
-        style={{ color: '#000', textDecoration: 'underline' }}
-      >
-        {email}
-      </a>
-    </div>
-    <div style={{ marginBottom: '12px', fontSize: '15px' }}>
-      <strong style={{ color: '#000' }}>Mensagem:</strong>
-      <div
-        style={{
-          background: '#f9fafb',
-          color: '#000',
-          borderRadius: '8px',
-          padding: '12px',
-          marginTop: '4px',
-          fontSize: '15px',
-          whiteSpace: 'pre-line',
-        }}
-      >
-        {message}
+    {(firstName || lastName) && (
+      <div style={{ marginBottom: '12px', fontSize: '15px' }}>
+        <strong style={{ color: '#000' }}>Nome:</strong> {firstName} {lastName}
       </div>
-    </div>
+    )}
+    {email && (
+      <div style={{ marginBottom: '12px', fontSize: '15px' }}>
+        <strong style={{ color: '#000' }}>Email:</strong>{' '}
+        <a
+          href={`mailto:${email}`}
+          style={{ color: '#000', textDecoration: 'underline' }}
+        >
+          {email}
+        </a>
+      </div>
+    )}
+    {message && (
+      <div style={{ marginBottom: '12px', fontSize: '15px' }}>
+        <strong style={{ color: '#000' }}>Mensagem:</strong>
+        <div
+          style={{
+            background: '#f9fafb',
+            color: '#000',
+            borderRadius: '8px',
+            padding: '12px',
+            marginTop: '4px',
+            fontSize: '15px',
+            whiteSpace: 'pre-line',
+          }}
+        >
+          {message}
+        </div>
+      </div>
+    )}
     <p style={{ color: '#555', fontSize: '13px', marginTop: '24px' }}>
       Para responder, basta clicar no email do cliente acima.
     </p>

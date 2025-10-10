@@ -155,5 +155,24 @@
       "contact": "Contact",
       "faq": "FAQ"
     }
+  },
+  "Validation": {
+    "firstName": {
+      "min": "First name must be at least 2 characters.",
+      "max": "First name must be at most 50 characters."
+    },
+    "lastName": {
+      "min": "Last name must be at least 2 characters.",
+      "max": "Last name must be at most 50 characters."
+    },
+    "email": {
+      "invalid": "Please provide a valid email address.",
+      "domain": "Only Gmail or Outlook emails are accepted."
+    },
+    "message": {
+      "min": "Message must be at least 2 characters.",
+      "max": "Message must be at most 2000 characters.",
+      "noLinks": "Please do not include links in the message."
+    }
   }
 }

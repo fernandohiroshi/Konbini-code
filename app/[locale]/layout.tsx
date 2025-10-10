@@ -59,10 +59,10 @@ export const metadata: Metadata = {
     "desenvolvimento web Brasil",
     "Konbini Code",
   ],
-  metadataBase: new URL("https://konbinicode.com.br"),
+  metadataBase: new URL("https://konbinicode.com"),
   applicationName: "Konbini Code",
   category: "technology",
-  authors: [{ name: "Konbini Code", url: "https://konbinicode.com.br" }],
+  authors: [{ name: "Konbini Code", url: "https://konbinicode.com" }],
   publisher: "Konbini Code",
   referrer: "origin-when-cross-origin",
   robots: {
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     title: "Konbini Code",
     description:
       "Desenvolvimento de Software sob medida para seu negócio. Criação de sites, sistemas, landing pages, integrações e automações.",
-    url: "https://konbinicode.com.br",
+    url: "https://konbinicode.com",
     siteName: "Konbini Code",
     images: [
       {
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
     site: "@konbinicode",
   },
   alternates: {
-    canonical: "https://konbinicode.com.br",
+    canonical: "https://konbinicode.com",
   },
 };
 

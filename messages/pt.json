@@ -157,5 +157,24 @@
     "title": "Página não encontrada",
     "description": "Ops! A página que você procura não existe.",
     "backToHome": "Voltar para o Home"
+  },
+  "Validation": {
+    "firstName": {
+      "min": "O nome deve ter pelo menos 2 caracteres.",
+      "max": "O nome deve ter no máximo 50 caracteres."
+    },
+    "lastName": {
+      "min": "O sobrenome deve ter pelo menos 2 caracteres.",
+      "max": "O sobrenome deve ter no máximo 50 caracteres."
+    },
+    "email": {
+      "invalid": "Informe um email válido.",
+      "domain": "Só são aceitos emails do Gmail ou Outlook."
+    },
+    "message": {
+      "min": "A mensagem deve ter pelo menos 2 caracteres.",
+      "max": "A mensagem deve ter no máximo 2000 caracteres.",
+      "noLinks": "Por favor, não inclua links na mensagem."
+    }
   }
 }

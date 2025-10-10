@@ -1,6 +1,6 @@
 "use client";
 
-import { formSchema } from "@/lib/schemas";
+import { createFormSchema, type TFunc } from "@/lib/schemas";
 
 import {
   Card,
@@ -32,8 +32,13 @@ import { useTranslations } from "next-intl";
 import { MapPin, Smartphone } from "lucide-react";
 
 export default function ContactForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const t = useTranslations("ContactSection");
+  const tv = useTranslations("Validation");
+
+  const schema = React.useMemo(() => createFormSchema(tv as unknown as TFunc), [tv]);
+
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -44,9 +49,7 @@ export default function ContactForm() {
 
   const [loading, setLoading] = React.useState(false);
 
-  const t = useTranslations("ContactSection");
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof schema>) {
     setLoading(true);
     try {
       await send(values);
@@ -98,6 +101,8 @@ export default function ContactForm() {
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin allow-popups"
+                allow="geolocation 'none'"
               ></iframe>
             </div>
           </div>
@@ -131,6 +136,8 @@ export default function ContactForm() {
                                   placeholder={t(
                                     "fields.firstName.placeholder"
                                   )}
+                                  maxLength={50}
+                                  autoComplete="given-name"
                                   {...field}
                                 />
                               </FormControl>
@@ -151,6 +158,8 @@ export default function ContactForm() {
                               <FormControl>
                                 <Input
                                   placeholder={t("fields.lastName.placeholder")}
+                                  maxLength={50}
+                                  autoComplete="family-name"
                                   {...field}
                                 />
                               </FormControl>
@@ -172,6 +181,9 @@ export default function ContactForm() {
                             <FormControl>
                               <Input
                                 placeholder={t("fields.email.placeholder")}
+                                type="email"
+                                inputMode="email"
+                                autoComplete="email"
                                 {...field}
                               />
                             </FormControl>
@@ -194,6 +206,7 @@ export default function ContactForm() {
                                 id="message"
                                 placeholder={t("fields.message.placeholder")}
                                 className="min-h-[120px] resize-none"
+                                maxLength={2000}
                                 {...field}
                               />
                             </FormControl>

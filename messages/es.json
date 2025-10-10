@@ -158,5 +158,24 @@
       "contact": "Contacto",
       "faq": "FAQ"
     }
+  },
+  "Validation": {
+    "firstName": {
+      "min": "El nombre debe tener al menos 2 caracteres.",
+      "max": "El nombre debe tener como máximo 50 caracteres."
+    },
+    "lastName": {
+      "min": "El apellido debe tener al menos 2 caracteres.",
+      "max": "El apellido debe tener como máximo 50 caracteres."
+    },
+    "email": {
+      "invalid": "Proporciona un correo electrónico válido.",
+      "domain": "Solo se aceptan correos de Gmail u Outlook."
+    },
+    "message": {
+      "min": "El mensaje debe tener al menos 2 caracteres.",
+      "max": "El mensaje debe tener como máximo 2000 caracteres.",
+      "noLinks": "Por favor, no incluyas enlaces en el mensaje."
+    }
   }
 }
