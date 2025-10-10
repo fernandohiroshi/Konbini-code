@@ -4,7 +4,6 @@ import { routing } from "@/i18n/routing";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://konbinicode.com";
 
-  // Home pages for each locale with language alternates
   const locales = routing.locales as readonly string[];
 
   const entries = locales.map((locale) => {
@@ -13,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     locales.forEach((l) => {
       languages[l] = `${baseUrl}/${l}`;
     });
-    // x-default points to base
     languages["x-default"] = baseUrl;
 
     return {
@@ -26,8 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     } satisfies MetadataRoute.Sitemap[0];
   });
-
-  // Root x-default
   entries.push({
     url: baseUrl,
     lastModified: new Date(),

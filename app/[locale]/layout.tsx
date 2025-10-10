@@ -116,17 +116,15 @@ export async function generateMetadata({
       locale: ogLocaleMap[locale] ?? "pt_BR",
       type: "website",
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Konbini Code",
-      description,
-      images: ["/readme/desktop.png"],
-      creator: "@konbinicode",
-      site: "@konbinicode",
-    },
     icons: {
-      icon: "/favicon.png",
-      apple: "/favicon.png",
+      icon: [
+        { url: "/favicon.ico" },
+        { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      ],
+      shortcut: [{ url: "/favicon.ico" }],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
     manifest: "/manifest.webmanifest",
     robots: {
