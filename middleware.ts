@@ -46,5 +46,6 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
+  matcher:
+    "/((?!api|trpc|_next|_vercel|favicon.ico|favicon.png|apple-touch-icon.png|icon-192.png|icon-512.png|safari-pinned-tab.svg|manifest.webmanifest|.*\\..*).*)",
 };
