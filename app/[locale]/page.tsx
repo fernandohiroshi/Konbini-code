@@ -1,7 +1,7 @@
 import Hero from "@/components/custom/hero";
 import About from "@/components/custom/about";
 import Services from "@/components/custom/services";
-import Models from "@/components/custom/models";
+// import Models from "@/components/custom/models";
 import FAQ from "@/components/custom/faq";
 import ContactForm from "@/components/custom/contact-form";
 import BrandingSection from "@/components/custom/branding-section";
@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <Models />
+      {/* <Models /> */}
       <BrandingSection />
       <FAQ />
       <ContactForm />
